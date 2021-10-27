@@ -45,4 +45,13 @@ def testModificaCheltuiala():
     assert getTip(cheltuialaNeupdatata) == "intretinere"
 
 
+def testGetByNumar():
+    lista=[]
+    lista = adaugaCheltuiala(23, 250, "25.12.2021", "intretinere", lista)
+    lista = adaugaCheltuiala(34, 500, "25.12.2021", "intretinere", lista)
+
+    assert getByNumar(23, lista)== [("numar", 23), ("suma",250), ("data","25.12.2021"), ("tip","intretinere")]
+    assert getByNumar(34,lista)==[("numar", 34), ("suma",500), ("data","25.12.2021"), ("tip","intretinere")]
+
+
 
