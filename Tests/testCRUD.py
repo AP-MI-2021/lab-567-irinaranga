@@ -1,5 +1,5 @@
 from Domain.cheltuiala import getNumar, getSuma, getData, getTip
-from Logic.CRUD import adaugaCheltuiala, getByNumar, stergeCheltuiala
+from Logic.CRUD import adaugaCheltuiala, getByNumar, stergeCheltuiala, modificaCheltuiala
 
 
 def testAdaugaCheltuiala():
