@@ -25,4 +25,24 @@ def testStergeCheltuiala():
     assert len(lista)== 1
     assert getByNumar(34, lista) is not None
 
+def testModificaCheltuiala():
+    lista=[]
+    lista= adaugaCheltuiala(23, 250, "25.12.2021", "intretinere", lista)
+    lista = adaugaCheltuiala(34, 500, "25.12.2021", "intretinere", lista)
+
+    lista = modificaCheltuiala(23, 640, "25.07.2022", "canal", lista)
+
+    cheltuialaUpdatata = getByNumar(23, lista)
+    assert getNumar(cheltuialaUpdatata) == 23
+    assert getSuma(cheltuialaUpdatata) == 640
+    assert getData(cheltuialaUpdatata) == "25.07.2022"
+    assert getTip(cheltuialaUpdatata) == "canal"
+
+    cheltuialaNeupdatata=getByNumar(34, lista)
+    assert getNumar(cheltuialaNeupdatata) == 34
+    assert getSuma(cheltuialaNeupdatata) == 500
+    assert getData(cheltuialaNeupdatata) == "25.12.2021"
+    assert getTip(cheltuialaNeupdatata) == "intretinere"
+
+
 
