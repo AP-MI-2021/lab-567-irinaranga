@@ -1,23 +1,31 @@
-def creeazaCheltuiala(numar, suma, data, tip):
+def creeazaCheltuiala(id, apartament, suma, data, tip):
     '''
     creeaza o cheltuiala
-    :param numar: int
+    :param id: int
+    :param apartament: int
     :param suma: int
     :param data: string
     :param tip: string
     :return: un dictionar ce retine o cheltuiala
     '''
-    return [("numar", numar), ("suma",suma), ("data",data), ("tip",tip)]
+    return [id,  apartament, suma, data, tip]
 
-
-
-def getNumar(cheltuiala):
+def getId(cheltuiala):
     '''
-    ia numarul cheltuielii
+    ia id-ul cheltuielii
+    :param cheltuiala: dictionar de tipul cheltuiala
+    :return: id-ul cheltuielii
+    '''
+    return cheltuiala[0]
+    #return cheltuiala['id']
+
+def getApartament(cheltuiala):
+    '''
+    ia nr. apartamentului cheltuielii
     :param cheltuiala: dictionar de tipul cheltuiala
     :return: numarul cheltuielii
     '''
-    return cheltuiala[0][1]
+    return cheltuiala[1]
     #return cheltuiala['numar']
 
 def getSuma(cheltuiala):
@@ -26,7 +34,7 @@ def getSuma(cheltuiala):
     :param cheltuiala: dictionar de tipul cheltuiala
     :return: suma cheltuielii
     '''
-    return cheltuiala[1][1]
+    return cheltuiala[2]
     #return cheltuiala['suma']
 
 def getData(cheltuiala):
@@ -35,7 +43,7 @@ def getData(cheltuiala):
     :param cheltuiala: dictionar de tipul cheltuiala
     :return: data cheltuielii
     '''
-    return cheltuiala[2][1]
+    return cheltuiala[3]
     #return cheltuiala['data']
 
 def getTip(cheltuiala):
@@ -44,17 +52,13 @@ def getTip(cheltuiala):
     :param cheltuiala: dictionar de tipul cheltuiala
     :return: tipul cheltuielii
     '''
-    return cheltuiala[3][1]
+    return cheltuiala[4]
     #return cheltuiala['tip']
 
 def toString(cheltuiala):
-    '''
-
-    :param cheltuiala:
-    :return:
-    '''
-    return "numar: {}, suma: {}, data: {}, tip: {} ".format(
-        getNumar(cheltuiala),
+    return "id: {}, apartament: {}, suma: {}, data: {}, tip: {} ".format(
+        getId(cheltuiala),
+        getApartament(cheltuiala),
         getSuma(cheltuiala),
         getData(cheltuiala),
         getTip(cheltuiala)

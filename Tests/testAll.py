@@ -1,9 +1,18 @@
-from Tests.testCRUD import testAdaugaCheltuiala, testStergeCheltuiala, testModificaCheltuiala, testGetByNumar
+from Tests.testCRUD import testAdaugaCheltuiala, testStergeCheltuiala, testModificaCheltuiala,  \
+    testGetById
 from Tests.testDomain import testCheltuiala
+from Tests.testFunctionalitati import testStergereChetuieliDupaApartament, testAdunareValoareLaCheltuialaDupaData, \
+    testMaxCheltuieliPentruFiecareTip, testOrdonareDescrescatorDupaSuma
+
 
 def runAllTests():
     testCheltuiala()
     testAdaugaCheltuiala()
     testStergeCheltuiala()
     testModificaCheltuiala()
-    testGetByNumar()
+    testGetById()
+
+    testStergereChetuieliDupaApartament()
+    testAdunareValoareLaCheltuialaDupaData()
+    testMaxCheltuieliPentruFiecareTip()
+    testOrdonareDescrescatorDupaSuma()

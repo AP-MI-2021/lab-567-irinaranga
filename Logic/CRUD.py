@@ -1,55 +1,63 @@
-from Domain.cheltuiala import getNumar, creeazaCheltuiala
+from Domain.cheltuiala import creeazaCheltuiala, getId
 
 
-def adaugaCheltuiala(numar, suma, data, tip, lista):
+def adaugaCheltuiala(id, apartament, suma, data, tip, lista):
     """
     adauga o cheltuiala intr o lista
-    :param numar: numarul cheltuielii, int
+    :param id: id-ul cheltuielii, int
+    :param apartament: nr. apartamentului cheltuielii, int
     :param suma: suma cheltuielii, int
-    :param data: data cheltuielii
+    :param data: data cheltuielii, string
     :param tip: tipul cheltuielii, string
     :param lista: lista de cheltuieli
     :return: lista continand vechile elemente si noua cheltuiala
     """
-    cheltuiala= creeazaCheltuiala(numar, suma, data, tip)
+    if getById(id, lista) is not None:
+        raise ValueError("Id-ul exista deja!")
+    cheltuiala= creeazaCheltuiala(id, apartament, suma, data, tip)
     return lista + [cheltuiala]
 
-def stergeCheltuiala(numar,lista):
+def stergeCheltuiala(id,lista):
     """
-    sterge o cheltuiala dupa numar dintr o lista
-    :param numar: numarul cheltuielii de sters, int
+    sterge o cheltuiala dupa id dintr o lista
+    :param id: id-ul cheltuielii de sters, int
     :param lista: lista de cheltuieli
     :return: o lista continand cheltuielile cu numarul diferit de numar
     """
-    return [cheltuiala for cheltuiala in lista if getNumar(cheltuiala) != numar]
+    if getById(id, lista) is None:
+        raise ValueError("Nu exista cheltuiala cu id-ul dat!")
+    return [cheltuiala for cheltuiala in lista if getId(cheltuiala) != id]
 
-def modificaCheltuiala(numar, suma, data, tip,lista):
+def modificaCheltuiala(id, apartament, suma, data, tip,lista):
     '''
-
-    :param numar:
-    :param suma:
-    :param data:
-    :param tip:
-    :param lista:
-    :return:
+    modifica cheltuiala dintr o lista
+    :param id: id-ul cheltuielii
+    :param apartament: nr. apartamentului cheltuielii
+    :param suma: suma cheltuielii, int
+    :param data: data cheltuielii, string
+    :param tip: tipul cheltuielii, string
+    :param lista: lista de cheltuieli
+    :return: lista continand vechile elemente si cheltuiala modificata
     '''
+    if getById(id, lista) is None:
+        raise ValueError("Nu exista cheltuiala cu id-ul dat!")
     listaNoua=[]
     for cheltuiala in lista:
-        if getNumar(cheltuiala)== numar:
-            cheltuialaNoua=creeazaCheltuiala(numar, suma, data, tip)
+        if getId(cheltuiala)== id:
+            cheltuialaNoua=creeazaCheltuiala(id, apartament, suma, data, tip)
             listaNoua.append(cheltuialaNoua)
         else:
             listaNoua.append(cheltuiala)
     return listaNoua
 
-def getByNumar(numar, lista):
+def getById(id, lista):
     '''
-
-    :param numar:
-    :param lista:
-    :return:
+    ia cheltuiala cu id-ul dat dintr o lista
+    :param id: id-ul cheltuielii
+    :param lista: lista de cheltuieli
+    :return: cheltuiala cu id-ul dat sau None, daca nu exista cheltuiala cu id-ul dat
     '''
     for cheltuiala in lista:
-        if getNumar(cheltuiala) == numar:
+        if getId(cheltuiala) == id:
             return cheltuiala
     return None
